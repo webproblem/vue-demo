@@ -1,3 +1,3 @@
 # vue-exam
 
-vue2 + vue-router + vuex 入门项目。
+vue2 + vue-router + vuex 入门项目。 
