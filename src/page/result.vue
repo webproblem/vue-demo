@@ -21,16 +21,19 @@ export default {
             totalScore: 0,
             //得分
             getScore: 0,
-            resultTips: ""
+            resultTips: "",
+            examList: []
         }
     },
     computed:mapState([
-        'examList',
         'saveAnswer',
-        'useTime'        
+        'useTime',
+        'examId'        
     ]),
     mounted () {
-        this.getSureAnswer();
+        const vm = this;
+        vm.examList = vm.$store.state.examList[this.examId - 1] || 0;
+        vm.getSureAnswer();
     },
     methods: {
         getSureAnswer() {
@@ -93,7 +96,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .exam-result{
         height: 100%;
         width: 100%;

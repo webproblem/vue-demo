@@ -11,7 +11,7 @@
           <label>{{ index + 1 }}. <span>{{item.title}} ({{item.score}}分)</span></label>
           <div class="item-options">
               <RadioGroup v-model="selectedValue" @on-change="changeCurrentAnswer">
-                  <Radio v-for="(option, listIndex) in item.options" :label="listIndex+1">{{option}}</Radio>
+                  <Radio v-for="(option, listIndex) in item.options" :label="listIndex+1" :key="listIndex">{{option}}</Radio>
               </RadioGroup>
           </div>
       </section>
@@ -36,18 +36,28 @@ export default {
             selectedValue: "",
             //初始化时间戳
             currentTime: new Date().getTime(),
-            restTime: ""
+            restTime: "",
+            timer: ""
         }
     },
     mounted () {
         this.countTime();  
+        // console.log(this.examList)
     },
-    computed: mapState([
+    computed: {
+        examList() {
+            const vm = this;
+            return vm.$store.state.examList[vm.$route.query.id - 1];
+        },
+        time() {
+            const vm = this;
+            return vm.$store.state.time[vm.$route.query.id - 1];
+        },
+        ...mapState([
         'currendIndex',
-        'examList',
-        'saveAnswer',
-        'time'
-    ]),
+        'saveAnswer'
+    ])
+    },
     watch: {
         currendIndex() {
         }  
@@ -56,7 +66,8 @@ export default {
         ...mapMutations([
             'NEXT_ITEM',
             'PREV_ITEM',
-            'USE_TIME'
+            'USE_TIME',
+            'EXAM_ID'
         ]),
         //下一题
         nextItem() {
@@ -75,7 +86,9 @@ export default {
         },
         //提交答案
         handleSubmit() {
+            this.EXAM_ID(this.$route.query.id);
             this.USE_TIME(new Date().getTime() - this.currentTime);
+            clearTimeout(this.timer);
             this.$router.push({name: 'Result'});
         },
         //更改当前题目的答案
@@ -102,11 +115,11 @@ export default {
                   minutes = getNumberPrefix(parseInt(restTime / (1000 * 60) % 60, 10)),
                   seconds = getNumberPrefix(parseInt(restTime / 1000 % 60, 10));
             vm.restTime = `${hours}:${minutes}:${seconds}`;
-            const timer = setTimeout(function(){
+            vm.timer = setTimeout(function(){
                 if(restTime > 0){
                     vm.countTime();
                 }else{
-                    clearTimeout(timer);
+                    clearTimeout(vm.timer);
                     vm.$Message.warning("交卷时间已到");
                 }
             }, 1000);
@@ -115,11 +128,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .exam{
     width: 100%;
     height: 100%;
-    font-size: 14px;
+    font-size: 1rem;
 }
 .exam .header,
 .exam section,
@@ -135,7 +148,7 @@ export default {
 .header .describe,
 .time-count-wrap
 {
-    font-size: 12px;
+    font-size: 0.8rem;
     color: rgba(135, 134, 136, 0.84);
 }
 .header .describe span:nth-child(2){
@@ -156,5 +169,8 @@ section .ivu-radio-group label{
     padding-left: 25px;
     padding-right: 25px;
     margin-left: 5px;
+}
+.ivu-radio-wrapper{
+    font-size: 0.8rem;
 }
 </style>

@@ -12,7 +12,8 @@ export default new Router({
     {
       path: '/',
       name: 'Hello',
-      component: HelloWorld
+      component: HelloWorld,
+      redirect: '/home'
     },
     {
       path: '/home',
@@ -20,12 +21,14 @@ export default new Router({
     },
     {
       path: '/exam1',
-      component: exam1
+      name: 'exam1',
+      component: exam1,
+      props: (route) => {id: route.query.id}
     },
     {
-        name: 'Result',
-        path: '/result',
-        component: result
-      }
+      name: 'Result',
+      path: '/result',
+      component: result
+    }
   ]
 })

@@ -1,6 +1,6 @@
-export const examTime = 30;
+export const examTime2 = 60;
 
-export const examList = [
+export const examList2 = [
     {
         title: "《春晓》这首诗是出自哪位诗人？",
         options: ["李白", "杜甫", "王维", "苏轼"],

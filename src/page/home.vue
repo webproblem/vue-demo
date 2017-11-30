@@ -1,7 +1,7 @@
 <template>
     <div class="home-page">
         <div class="button-group">
-            <span><router-link to="/exam1">小学考试</router-link></span>
+            <span><router-link :to="{name: 'exam1', query: {id: 1}}">小学考试</router-link></span>
             <span><router-link to="/exam2">初中考试</router-link></span>
             <span><router-link to="/exam3">高中考试</router-link></span>
             <span><router-link to="/exam4">大学考试</router-link></span>
@@ -13,7 +13,7 @@
         
     }
 </script>
-<style>
+<style scoped>
     .home-page{
         height: 100%;
         width: 100%;
