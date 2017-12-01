@@ -1,4 +1,4 @@
-export const examTime = 1;
+export const examTime = 30;
 
 export const examList = [
     {
