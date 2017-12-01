@@ -1,3 +1,12 @@
+/**
+ * @param {Number} examTime 考试时长
+ * @param {String} title 题目内容
+ * @param {Array} options 答案选项
+ * @param {Number} answer 正确答案索引，从0开始
+ * @param {Number} score 题目对应的分数
+ * @param {String} examId 题目唯一ID
+*/
+
 export const examTime2 = 60;
 
 export const examList2 = [
