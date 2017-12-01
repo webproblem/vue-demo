@@ -1,7 +1,7 @@
 <template>
   <div class="exam">
       <div class="header">
-          <p class="title">小学考试试题</p>
+          <p class="title">考试试题</p>
           <p class="describe">
               <span>考试日期: {{currentDate}}</span>
               <span>时长: {{time}}分钟</span>
