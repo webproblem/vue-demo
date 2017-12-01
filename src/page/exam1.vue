@@ -11,7 +11,7 @@
           <label>{{ index + 1 }}. <span>{{item.title}} ({{item.score}}分)</span></label>
           <div class="item-options">
               <RadioGroup v-model="selectedValue" @on-change="changeCurrentAnswer">
-                  <Radio v-for="(option, listIndex) in item.options" :label="listIndex+1" :key="listIndex">{{option}}</Radio>
+                  <Radio v-for="(option, listIndex) in item.options" :label="listIndex+1" :key="listIndex"><span v-html="option"></span></Radio>
               </RadioGroup>
           </div>
       </section>
