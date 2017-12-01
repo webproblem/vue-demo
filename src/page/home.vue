@@ -1,16 +1,14 @@
 <template>
     <div class="home-page">
         <div class="button-group">
-            <span><router-link :to="{name: 'exam1', query: {id: 1}}">小学考试</router-link></span>
-            <span><router-link to="/exam2">初中考试</router-link></span>
-            <span><router-link to="/exam3">高中考试</router-link></span>
-            <span><router-link to="/exam4">大学考试</router-link></span>
+            <span><router-link :to="{name: 'exam1', query: {id: 1}}">考试试题一</router-link></span>
+            <span><router-link :to="{name: 'exam1', query: {id: 2}}">考试试题二</router-link></span>
         </div>
-    </div>    
+    </div>
 </template>
 <script>
     export default {
-        
+
     }
 </script>
 <style scoped>

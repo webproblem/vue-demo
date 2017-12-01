@@ -40,8 +40,13 @@ export default {
             timer: ""
         }
     },
+    watch: {
+      $route (to) {
+        debugger;
+      }
+    },
     mounted () {
-        this.countTime();  
+        this.countTime();
         // console.log(this.examList)
     },
     computed: {
@@ -54,13 +59,9 @@ export default {
             return vm.$store.state.time[vm.$route.query.id - 1];
         },
         ...mapState([
-        'currendIndex',
-        'saveAnswer'
-    ])
-    },
-    watch: {
-        currendIndex() {
-        }  
+            'currendIndex',
+            'saveAnswer'
+        ])
     },
     methods: {
         ...mapMutations([
@@ -118,9 +119,12 @@ export default {
             vm.timer = setTimeout(function(){
                 if(restTime > 0){
                     vm.countTime();
-                }else{
+                }else if(restTime <= 0){
                     clearTimeout(vm.timer);
-                    vm.$Message.warning("交卷时间已到");
+                    vm.$Message.warning("交卷时间已到，系统将帮您自动交卷");
+                    setTimeout(() => {
+                      vm.handleSubmit();
+                    }, 2000)
                 }
             }, 1000);
         }

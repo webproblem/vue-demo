@@ -1,8 +1,10 @@
 <template>
   <div class="exam-result">
       <div class="scores-container">
-          <header class="scores">{{getScore}}分</header>
-          <label class="result-tips">{{resultTips}}</label>
+          <div class="">
+            <header class="scores">{{getScore}}分</header>
+            <label class="result-tips">{{resultTips}}</label>
+          </div>
       </div>
   </div>
 </template>
@@ -28,23 +30,23 @@ export default {
     computed:mapState([
         'saveAnswer',
         'useTime',
-        'examId'        
+        'examId'
     ]),
     mounted () {
         const vm = this;
-        vm.examList = vm.$store.state.examList[this.examId - 1] || 0;
+        vm.examList = vm.$store.state.examList[this.examId - 1] || [];
         vm.getSureAnswer();
     },
     methods: {
         getSureAnswer() {
             var vm = this;
-            if(vm.examList.length !== vm.saveAnswer.length){
-                vm.$Message.error({
-                    content: '系统错误，请稍后重试',
-                    duration: 3
-                });
-                return;
-            }
+            // if(vm.examList.length !== vm.saveAnswer.length){
+            //     vm.$Message.error({
+            //         content: '系统错误，请稍后重试',
+            //         duration: 3
+            //     });
+            //     return;
+            // }
             vm.examList.forEach(function(item, index){
                 vm.totalScore += parseInt(item.score);
                 if((item.answer + 1) == vm.saveAnswer[index]){
@@ -55,40 +57,41 @@ export default {
                 }
             })
             vm.setResultTips();
+            console.log(this.useTime)
             console.log("答对题:" + vm.sureExam.length);
         },
         setResultTips() {
             const scores = [100 ,90, 70, 60, 40, 20],
                   tips = [
                       '哇，你太优秀了，厉害了！！！',
-                      '智商只差一步就爆表了，继续继续加油！',
+                      '智商只差一步就爆表了，继续加油！',
                       '表现很好，good！',
                       '嗯，不错，还有很大的进步空间！',
                       '还需要继续加油哦！！！',
                       'What are you弄啥嘞！'
                   ];
             if(this.getScore <= scores[5]) {
-                this.resultTips = tips[5]; 
+                this.resultTips = tips[5];
                 return;
             }
             if(this.getScore <= scores[4]) {
-                this.resultTips = tips[4]; 
+                this.resultTips = tips[4];
                 return;
             }
             if(this.getScore <= scores[3]) {
-                this.resultTips = tips[3]; 
+                this.resultTips = tips[3];
                 return;
             }
             if(this.getScore <= scores[2]) {
-                this.resultTips = tips[2]; 
+                this.resultTips = tips[2];
                 return;
             }
             if(this.getScore <= scores[1]) {
-                this.resultTips = tips[1]; 
+                this.resultTips = tips[1];
                 return;
             }
             if(this.getScore <= scores[0]) {
-                this.resultTips = tips[0]; 
+                this.resultTips = tips[0];
                 return;
             }
         }

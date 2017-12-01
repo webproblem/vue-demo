@@ -1,4 +1,4 @@
-export const examTime = 30;
+export const examTime = 1;
 
 export const examList = [
     {
@@ -49,21 +49,24 @@ export const examList = [
         examId: "5"
     },
     {
-        title: "---Sam is 160cm tall. Ted is 10cm shorter than him<br/>How tall is Ted",
+        title: `---Sam is 160cm tall. Ted is 10cm shorter than him.
+                How tall is Ted`,
         options: ["150cm", "160cm", "170cm", "180cm"],
         answer: 0,
         score: 10,
         examId: "6"
     },
     {
-        title: "----_______did you go on your holiday?<br/>----Shanghai.",
+        title: `----_______did you go on your holiday?
+                ----Shanghai.`,
         options: ["What", "Where", "How", "where"],
         answer: 1,
         score: 10,
         examId: "7"
     },
     {
-        title: "-- ______ is the coat?<br/>--Thirty-five yuan, please.",
+        title: `-- ______ is the coat?
+                --Thirty-five yuan, please.`,
         options: ["How", "How much", "How old", "Where"],
         answer: 1,
         score: 10,
