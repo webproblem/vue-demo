@@ -42,7 +42,6 @@ export default {
     },
     watch: {
       $route (to) {
-        debugger;
       }
     },
     mounted () {
@@ -132,7 +131,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .exam{
     width: 100%;
     height: 100%;
@@ -165,6 +164,7 @@ export default {
 section .ivu-radio-group label{
     display: block;
     padding: 7px 0px;
+    white-space: normal;
 }
 .buttons-group{
     padding: 30px 0px;
@@ -175,6 +175,13 @@ section .ivu-radio-group label{
     margin-left: 5px;
 }
 .ivu-radio-wrapper{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+}
+span.ivu-radio+*{
+  position: relative;
+  left: 20px;
+}
+.item-options .ivu-radio{
+  position: absolute!important;
 }
 </style>
