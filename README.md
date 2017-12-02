@@ -1,6 +1,6 @@
 # vue-exam
 
-vue2 + vue-router + vuex 入门项目，移动端的一个建议考试系统平台，在预览效果时，请使用Chrome浏览器的移动端预览模式。 
+vue2 + vue-router + vuex 入门项目，移动端的一个简易考试系统平台，在预览效果时，请使用Chrome浏览器的移动端预览模式。 
 
 
 ## 项目运行 ##
